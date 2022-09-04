@@ -1,12 +1,12 @@
 import type { NextPage } from "next";
 import { Table, Container } from "react-bootstrap";
-import { PageContainer } from "../components";
+import { PageContainer, PageHeading } from "../components";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Home: NextPage = () => {
   return (
     <PageContainer>
-      <div>Hour by Hour Bottleneck Board</div>
+      <PageHeading>Hour by Hour Bottleneck Board</PageHeading>
 
       <Table bordered={true}>
         <thead>
