@@ -4,10 +4,15 @@ import classNames from "classnames";
 import React, { ComponentProps, useMemo } from "react";
 
 export type NumberModalPropsType = ModalProps &
-  ComponentProps<typeof StyledModal> & {};
+  ComponentProps<typeof StyledModal> & {
+    onClose?: (event: any) => any;
+    isOpen?: boolean;
+  };
 
 export const NumberModal = ({
   className: classNameProp,
+  isOpen: isOpenProp = false,
+  onClose: onCloseProp = () => {},
   ...restProps
 }: NumberModalPropsType) => {
   const classNameMemo = useMemo(() => {
@@ -16,12 +21,17 @@ export const NumberModal = ({
   }, [classNameProp]);
 
   return (
-    <StyledModal show={true} onClose={() => {}} {...restProps}>
+    <StyledModal
+      className={classNameMemo}
+      onHide={onCloseProp}
+      show={isOpenProp}
+      {...restProps}
+    >
       <Modal.Header closeButton={true}>
         <Modal.Title>Number</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form.Control value="test"></Form.Control>
+        <Form.Control value="0"></Form.Control>
         <div className="NumberModal-numberPad">
           <Button className="NumberModal-item">1</Button>
           <Button className="NumberModal-item">2</Button>
@@ -38,8 +48,12 @@ export const NumberModal = ({
         </div>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary">Close</Button>
-        <Button variant="primary">Save Changes</Button>
+        <Button onClick={onCloseProp} variant="secondary">
+          Close
+        </Button>
+        <Button onClick={onCloseProp} variant="primary">
+          Save
+        </Button>
       </Modal.Footer>
     </StyledModal>
   );
