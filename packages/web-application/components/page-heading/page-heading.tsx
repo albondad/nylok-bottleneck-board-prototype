@@ -1,10 +1,10 @@
 import { ContainerProps } from "react-bootstrap";
-import { StyledContainer } from "./page-heading.styled-components";
+import { StyledH1 } from "./page-heading.styled-components";
 import classNames from "classnames";
 import React, { ComponentProps, useMemo } from "react";
 
 export type PageHeadingPropsType = ContainerProps &
-  ComponentProps<typeof StyledContainer> & {};
+  ComponentProps<typeof StyledH1> & {};
 
 export const PageHeading = ({
   className: classNameProp,
@@ -15,5 +15,5 @@ export const PageHeading = ({
     return newClassNameMemo;
   }, [classNameProp]);
 
-  return <StyledContainer className={classNameMemo} {...restProps} />;
+  return <StyledH1 className={classNameMemo} {...restProps} />;
 };

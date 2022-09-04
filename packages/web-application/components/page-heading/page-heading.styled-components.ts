@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-export const StyledContainer = styled("h1")`
-  font-size: 1.5rem;
-  font-weight: 700;
+export const StyledH1 = styled("h1")`
+  & {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
 `;
