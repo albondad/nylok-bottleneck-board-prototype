@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NumberModal } from "../number-modal";
+import { NumberModal, OptionsModal } from "../";
 import { sampleDataUtility } from "../../utilities";
 import {
   Box,
@@ -26,11 +26,27 @@ export const HourByHourBottleneckBoardTable =
       setIsNumberModalOpenState(false);
     };
 
+    const [optionsModalIsOpenState, setOptionsModalIsOpenState] =
+      useState(false);
+
+    const handleOptionsTdClick = () => {
+      setOptionsModalIsOpenState(true);
+    };
+
+    const handleOptionsModalClose = () => {
+      setOptionsModalIsOpenState(false);
+    };
+
     return (
       <Box marginTop="1rem">
         <NumberModal
           isOpen={numberModalIsOpenState}
           onClose={handleNumberModalClose}
+        />
+
+        <OptionsModal
+          isOpen={optionsModalIsOpenState}
+          onClose={handleOptionsModalClose}
         />
 
         <TableContainer>
@@ -75,7 +91,7 @@ export const HourByHourBottleneckBoardTable =
                       borderWidth="1px 0 0 1px"
                       fontSize="1rem"
                       padding="1rem 2rem"
-                      onClick={handleNumberTdClick}
+                      onClick={handleOptionsTdClick}
                     >
                       {element.opNumber}
                     </Td>
@@ -85,7 +101,7 @@ export const HourByHourBottleneckBoardTable =
                       borderWidth="1px 0 0 1px"
                       fontSize="1rem"
                       padding="1rem 2rem"
-                      onClick={handleNumberTdClick}
+                      onClick={handleOptionsTdClick}
                     >
                       {element.itemNumber}
                     </Td>
