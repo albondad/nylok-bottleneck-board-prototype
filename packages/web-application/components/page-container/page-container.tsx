@@ -1,19 +1,17 @@
-import { ContainerProps } from "react-bootstrap";
-import { StyledContainer } from "./page-container.styled-components";
 import classNames from "classnames";
-import React, { ComponentProps, useMemo } from "react";
+import React, { useMemo } from "react";
+import { Box, BoxProps } from "@chakra-ui/react";
 
-export type PageContainerPropsType = ContainerProps &
-  ComponentProps<typeof StyledContainer> & {};
+export type PageContainerPropsType = BoxProps & {};
 
 export const PageContainer = ({
   className: classNameProp,
   ...restProps
 }: PageContainerPropsType) => {
   const classNameMemo = useMemo(() => {
-    const newClassNameMemo = classNames("page-container", classNameProp);
+    const newClassNameMemo = classNames("PageContainer", classNameProp);
     return newClassNameMemo;
   }, [classNameProp]);
 
-  return <StyledContainer className={classNameMemo} {...restProps} />;
+  return <Box className={classNameMemo} padding="4rem" {...restProps} />;
 };

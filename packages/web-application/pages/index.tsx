@@ -8,7 +8,7 @@ import {
 const Home: NextPage = () => {
   return (
     <PageContainer>
-      <PageHeading>Hour by Hour Bottleneck Board</PageHeading>
+      <PageHeading />
       <HourByHourBottleneckBoardTable />
     </PageContainer>
   );

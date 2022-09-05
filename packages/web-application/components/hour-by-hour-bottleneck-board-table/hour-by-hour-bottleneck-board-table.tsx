@@ -4,6 +4,16 @@ import classNames from "classnames";
 import React, { ComponentProps, useMemo, useState } from "react";
 import { NumberModal } from "../number-modal";
 import { sampleDataUtility } from "../../utilities";
+import {
+  Box,
+  Table,
+  TableContainer,
+  Tbody,
+  Td,
+  Th,
+  Thead,
+  Tr,
+} from "@chakra-ui/react";
 
 export type HourByHourBottleneckBoardTablePropsType = TableProps &
   ComponentProps<typeof StyledTable> & {};
@@ -27,34 +37,76 @@ export const HourByHourBottleneckBoardTable = ({
   };
 
   return (
-    <StyledTable bordered={true} className={classNameMemo} {...restProps}>
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>OP #</th>
-          <th>Item #</th>
-          <th>Target PPH</th>
-        </tr>
-      </thead>
-      <tbody>
-        {sampleDataUtility.sampleData.map((element) => {
-          const handleNumberTableDataClick = () => {
-            setIsNumberModalOpenState(true);
-          };
-          return (
-            <tr key={element.id}>
-              <td>{element.date}</td>
-              <td onClick={handleNumberTableDataClick}>{element.opNumber}</td>
-              <td onClick={handleNumberTableDataClick}>{element.itemNumber}</td>
-              <td onClick={handleNumberTableDataClick}>{element.targetPph}</td>
-            </tr>
-          );
-        })}
-      </tbody>
-      <NumberModal
-        show={isNumberModalOpenState}
-        onClose={handleNumberModalClose}
-      />
-    </StyledTable>
+    <Box marginTop="1rem">
+      <TableContainer>
+        <Table
+          variant="unstyled"
+          borderColor="gray.200"
+          borderStyle="solid"
+          borderWidth="1px"
+        >
+          <Thead backgroundColor="gray.200">
+            <Tr>
+              <Th fontSize="1rem" padding="1rem 2rem">
+                Date
+              </Th>
+              <Th fontSize="1rem" padding="1rem 2rem">
+                OP #
+              </Th>
+              <Th fontSize="1rem" padding="1rem 2rem">
+                Item #
+              </Th>
+              <Th fontSize="1rem" padding="1rem 2rem">
+                PPH
+              </Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            {sampleDataUtility.sampleData.map((element) => {
+              return (
+                <Tr key={element.id}>
+                  <Td
+                    borderColor="gray.200"
+                    borderStyle="solid"
+                    borderWidth="1px 0 0 1px"
+                    fontSize="1rem"
+                    padding="1rem 2rem"
+                  >
+                    {element.date}
+                  </Td>
+                  <Td
+                    borderColor="gray.200"
+                    borderStyle="solid"
+                    borderWidth="1px 0 0 1px"
+                    fontSize="1rem"
+                    padding="1rem 2rem"
+                  >
+                    {element.opNumber}
+                  </Td>
+                  <Td
+                    borderColor="gray.200"
+                    borderStyle="solid"
+                    borderWidth="1px 0 0 1px"
+                    fontSize="1rem"
+                    padding="1rem 2rem"
+                  >
+                    {element.itemNumber}
+                  </Td>
+                  <Td
+                    borderColor="gray.200"
+                    borderStyle="solid"
+                    borderWidth="1px 0 0 1px"
+                    fontSize="1rem"
+                    padding="1rem 2rem"
+                  >
+                    {element.targetPph}
+                  </Td>
+                </Tr>
+              );
+            })}
+          </Tbody>
+        </Table>
+      </TableContainer>
+    </Box>
   );
 };

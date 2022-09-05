@@ -1,17 +1,12 @@
-import { StyledH1 } from "./page-heading.styled-components";
-import classNames from "classnames";
-import React, { ComponentProps, useMemo } from "react";
+import React from "react";
+import { Heading } from "@chakra-ui/react";
 
-export type PageHeadingPropsType = ComponentProps<typeof StyledH1> & {};
+export type PageHeadingPropsType = {};
 
-export const PageHeading = ({
-  className: classNameProp,
-  ...restProps
-}: PageHeadingPropsType) => {
-  const classNameMemo = useMemo(() => {
-    const newClassNameMemo = classNames("page-heading", classNameProp);
-    return newClassNameMemo;
-  }, [classNameProp]);
-
-  return <StyledH1 className={classNameMemo} {...restProps} />;
+export const PageHeading = () => {
+  return (
+    <Heading fontSize="1.5rem" fontWeight={700}>
+      Hour by Hour Bottleneck Board
+    </Heading>
+  );
 };
