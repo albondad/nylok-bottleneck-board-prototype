@@ -11,6 +11,7 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
+import { CalendarIcon, ChevronDownIcon } from "@chakra-ui/icons";
 
 export type HourByHourBottleneckBoardTablePropsType = {};
 
@@ -68,7 +69,7 @@ export const HourByHourBottleneckBoardTable =
                   Item #
                 </Th>
                 <Th fontSize="1rem" padding="1rem 2rem">
-                  PPH
+                  Target PPH
                 </Th>
               </Tr>
             </Thead>
@@ -83,7 +84,12 @@ export const HourByHourBottleneckBoardTable =
                       fontSize="1rem"
                       padding="1rem 2rem"
                     >
-                      {element.date}
+                      <Box display="flex">
+                        {element.date}
+                        <Box marginLeft="auto">
+                          <CalendarIcon />
+                        </Box>
+                      </Box>
                     </Td>
                     <Td
                       borderColor="gray.200"
@@ -93,7 +99,12 @@ export const HourByHourBottleneckBoardTable =
                       padding="1rem 2rem"
                       onClick={handleOptionsTdClick}
                     >
-                      {element.opNumber}
+                      <Box display="flex">
+                        {element.operatorNumber}
+                        <Box marginLeft="auto">
+                          <ChevronDownIcon />
+                        </Box>
+                      </Box>
                     </Td>
                     <Td
                       borderColor="gray.200"
@@ -113,7 +124,7 @@ export const HourByHourBottleneckBoardTable =
                       padding="1rem 2rem"
                       onClick={handleNumberTdClick}
                     >
-                      {element.targetPph}
+                      {element.targetPartsPerHour}
                     </Td>
                   </Tr>
                 );
