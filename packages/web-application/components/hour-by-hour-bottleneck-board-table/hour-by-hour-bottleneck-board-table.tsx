@@ -1,6 +1,4 @@
-import { TableProps } from "react-bootstrap";
-import classNames from "classnames";
-import React, { ComponentProps, useMemo, useState } from "react";
+import React, { useState } from "react";
 import { NumberModal } from "../number-modal";
 import { sampleDataUtility } from "../../utilities";
 import {
@@ -12,7 +10,6 @@ import {
   Th,
   Thead,
   Tr,
-  useBoolean,
 } from "@chakra-ui/react";
 
 export type HourByHourBottleneckBoardTablePropsType = {};

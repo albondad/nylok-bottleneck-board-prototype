@@ -1,4 +1,3 @@
-import classNames from "classnames";
 import React, { useMemo } from "react";
 import { Box, BoxProps } from "@chakra-ui/react";
 
@@ -8,10 +7,5 @@ export const PageContainer = ({
   className: classNameProp,
   ...restProps
 }: PageContainerPropsType) => {
-  const classNameMemo = useMemo(() => {
-    const newClassNameMemo = classNames("PageContainer", classNameProp);
-    return newClassNameMemo;
-  }, [classNameProp]);
-
-  return <Box className={classNameMemo} padding="4rem" {...restProps} />;
+  return <Box padding="4rem" {...restProps} />;
 };
